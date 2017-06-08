@@ -79,7 +79,8 @@ module FakeS3
             :marker => s_req.query["marker"] ? s_req.query["marker"].to_s : nil,
             :prefix => s_req.query["prefix"] ? s_req.query["prefix"].to_s : nil,
             :max_keys => s_req.query["max-keys"] ? s_req.query["max-keys"].to_i : nil,
-            :delimiter => s_req.query["delimiter"] ? s_req.query["delimiter"].to_s : nil
+            :delimiter => s_req.query["delimiter"] ? s_req.query["delimiter"].to_s : nil,
+            :start_after => s_req.query["start-after"] ? s_req.query["start-after"] : nil
           }
           bq = bucket_obj.query_for_range(query)
           response.body = XmlAdapter.bucket_query(bq)
