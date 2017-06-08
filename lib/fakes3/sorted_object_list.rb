@@ -55,8 +55,9 @@ module FakeS3
     # :max_keys  : a maximum number of results
     # :prefix    : a string to filter the results by
     # :delimiter : not supported yet
+    # :start_after : return key names after a specific object key
     def list(options)
-      marker = options[:marker]
+      marker = options[:marker] || options[:start_after]
       prefix = options[:prefix]
       max_keys = options[:max_keys] || 1000
       delimiter = options[:delimiter]
